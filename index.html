@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+<meta name="theme-color" content="#0d0a0e">
+<title>so many dates we gotta do</title>
+<meta property="og:title" content="so many dates we gotta do 🥲">
+<meta property="og:description" content="a little deck of every date we said we'd do">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0d0a0e;
+  --ink:#f6e9e1;
+  --muted:#c4adb2;
+  --red:#b3122e;
+  --red-hi:#d3203f;
+  --pink:#f7a8c4;
+  --gold:#d8b46a;
+  --gold-dim:rgba(216,180,106,.38);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh;background:var(--night);color:var(--ink);
+  font:500 20px/1.5 "Cormorant Garamond",Georgia,serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(60vmax 50vmax at 110% -10%,rgba(247,168,196,.13),transparent 60%),
+    radial-gradient(70vmax 60vmax at -20% 110%,rgba(179,18,46,.28),transparent 60%),
+    linear-gradient(180deg,#0d0a0e 0%,#150c13 55%,#0d0a0e 100%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.65;
+  background-image:
+    radial-gradient(1.2px 1.2px at 23px 41px,#fff 50%,transparent 51%),
+    radial-gradient(1px 1px at 141px 87px,#ffe9f1 50%,transparent 51%),
+    radial-gradient(1.4px 1.4px at 97px 163px,#fff 50%,transparent 51%),
+    radial-gradient(1px 1px at 190px 23px,#f7d9a8 50%,transparent 51%),
+    radial-gradient(1px 1px at 61px 121px,#fff 50%,transparent 51%);
+  background-size:211px 197px;
+}
+.hand{font-family:"Caveat",cursive;font-weight:600}
+h1,h2,h3,.lede,footer .hand{text-wrap:balance}
+a{color:inherit}
+
+/* hero */
+.hero{position:relative;max-width:1120px;margin:0 auto;min-height:100svh;padding:76px 22px 40px;display:grid;align-content:center;gap:34px}
+.moon{position:absolute;top:34px;right:26px;width:58px;height:58px;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,#fff7ea,#f2d8c2 58%,#d7b49c);
+  box-shadow:0 0 40px 10px rgba(255,228,208,.16),0 0 140px 50px rgba(247,168,196,.07)}
+.for{font-size:27px;color:var(--pink)}
+h1{font-weight:500;font-style:italic;font-size:clamp(48px,12vw,100px);line-height:.96;letter-spacing:-.01em;margin-top:6px}
+.by{font-size:25px;color:var(--muted);margin-top:8px}
+.lede{max-width:31ch;font-size:22px;margin-top:16px;opacity:.93}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{appearance:none;border:0;cursor:pointer;font:600 19px/1 "Cormorant Garamond",serif;letter-spacing:.02em;padding:15px 22px;border-radius:999px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent}
+.btn.primary{background:linear-gradient(180deg,var(--red-hi),var(--red));box-shadow:0 8px 24px rgba(179,18,46,.45),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn.ghost{background:transparent;box-shadow:inset 0 0 0 1px var(--gold-dim)}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus{outline:none}
+.btn:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.adhd{display:flex;align-items:center;gap:18px}
+.adhd .tcard{width:min(44vw,250px);flex:none}
+.adhd figcaption{font-size:19px;color:var(--muted);max-width:20ch}
+.adhd figcaption .hand{font-size:24px;color:var(--pink);display:block;line-height:1.1}
+@media(min-width:900px){
+  .hero{grid-template-columns:1.3fr .9fr;align-items:center;column-gap:56px}
+  .adhd{flex-direction:column;align-items:center;text-align:center}
+  .adhd figcaption{max-width:26ch}
+}
+
+/* tarot cards */
+.tcard{position:relative;aspect-ratio:2/3;border-radius:14px;perspective:1200px;-webkit-tap-highlight-color:transparent}
+.tcard .inner{position:absolute;inset:0;transition:transform .8s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
+.tcard.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 14px 34px rgba(0,0,0,.55),0 0 0 1px var(--gold-dim);background:#160a10}
+.face img{width:100%;height:100%;object-fit:cover;display:block;border-radius:14px}
+.face.back,.face.reveal{transform:rotateY(180deg)}
+.label{position:absolute;left:0;right:0;bottom:0;padding:30px 8px 11px;text-align:center;border-radius:0 0 14px 14px;
+  background:linear-gradient(180deg,transparent,rgba(12,7,10,.9) 46%)}
+.num{display:block;font:600 12px/1 "Cinzel",serif;letter-spacing:.2em;color:var(--gold)}
+.name{display:block;margin-top:5px;font:600 clamp(12.5px,3.3vw,16px)/1.15 "Cinzel",serif;letter-spacing:.1em;text-transform:uppercase}
+.sym{position:absolute;inset:0 0 28% 0;display:none;place-items:center;font-size:54px}
+.face.noart{background:radial-gradient(100% 70% at 50% 20%,#4a1222,#160a10)}
+.face.noart img{display:none}
+.face.noart .sym{display:grid}
+.face.back{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:18px 14px;
+  background:radial-gradient(120% 80% at 50% 0%,#3a1020 0%,#1a0b12 60%,#120910 100%)}
+.face.back::before{content:"";position:absolute;inset:7px;border:1px solid var(--gold-dim);border-radius:10px;pointer-events:none}
+.back h3{font:600 clamp(21px,5.4vw,28px)/1.05 "Cormorant Garamond",serif;margin-top:4px}
+.back .where{font-size:clamp(14px,3.6vw,16px);color:var(--muted);font-style:italic;line-height:1.25}
+.back .note{font:600 clamp(18px,4.6vw,23px)/1.1 "Caveat",cursive;color:var(--pink);margin-top:6px}
+.back .when{margin-top:10px;font:600 10px/1 "Cinzel",serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);border-radius:999px;padding:6px 10px}
+.flip{cursor:pointer;outline:none}
+.flip:focus-visible .face{box-shadow:0 0 0 2px var(--pink)}
+.flip:not(.flipped):hover .inner{transform:translateY(-5px) rotate(-.6deg)}
+.tcard.next-up::after{content:"next up";position:absolute;top:-10px;right:-6px;z-index:3;font:600 11px/1 "Cinzel",serif;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--pink);color:#2a0d18;padding:6px 9px;border-radius:999px;transform:rotate(6deg);box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.tcard.glow .face{box-shadow:0 0 0 2px var(--pink),0 0 44px rgba(247,168,196,.6)}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+
+/* sections */
+.sec{max-width:1120px;margin:0 auto;padding:54px 22px}
+.kicker{font:600 12px/1 "Cinzel",serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.sec-title{font:500 italic clamp(38px,8.5vw,58px)/1 "Cormorant Garamond",serif}
+.sec-sub{color:var(--muted);margin-top:8px}
+.next{display:grid;grid-template-columns:104px 1fr;gap:18px;align-items:center;padding:18px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(179,18,46,.24),rgba(247,168,196,.08));box-shadow:inset 0 0 0 1px rgba(247,168,196,.25)}
+.next .tcard{width:104px}
+.next .kicker{font-size:11px;letter-spacing:.14em}
+.next h2{font:600 32px/1 "Cormorant Garamond",serif;margin-top:8px}
+.next p{font-size:19px;color:var(--muted);margin-top:6px;line-height:1.3}
+.next p .hand{color:var(--pink);font-size:23px}
+.deck{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 16px;margin-top:28px}
+@media(min-width:700px){.deck{grid-template-columns:repeat(3,1fr);gap:24px}}
+@media(min-width:1000px){.deck{grid-template-columns:repeat(4,1fr)}}
+
+/* polaroids */
+.polaroids{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 16px;margin-top:34px}
+@media(min-width:900px){.polaroids{grid-template-columns:repeat(4,1fr);gap:28px}}
+.polaroid{position:relative;background:#f3ede6;padding:9px 9px 0;border-radius:3px;box-shadow:0 14px 30px rgba(0,0,0,.5);transform:rotate(var(--r,0deg));color:#2b1b20}
+.polaroid::before{content:"";position:absolute;top:-10px;left:50%;width:62px;height:20px;transform:translateX(-50%) rotate(-3deg);background:rgba(247,168,196,.6);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.photo{position:relative;aspect-ratio:4/5;background:radial-gradient(90% 90% at 30% 20%,#3b1422,#120a0f);display:grid;place-items:center;font-size:42px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.03)}
+.photo i{position:absolute;bottom:7px;left:0;right:0;text-align:center;font:600 15px/1 "Caveat",cursive;font-style:normal;color:rgba(247,168,196,.55)}
+.polaroid figcaption{font:600 20px/1.12 "Caveat",cursive;padding:10px 4px 14px;min-height:78px}
+.polaroid small{display:block;font-size:17px;color:#7a5560;margin-top:2px}
+
+footer{text-align:center;padding:30px 22px 70px;color:var(--muted)}
+footer .hand{font-size:27px;color:var(--pink);line-height:1.15}
+footer .tiny{font-size:16px;margin-top:12px;opacity:.75}
+
+/* pull modal */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px;background:rgba(8,5,7,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.modal[hidden]{display:none}
+.modal-box{width:min(380px,100%);text-align:center}
+.modal .hand{color:var(--pink);font-size:22px;margin-top:6px}
+.modal .tcard{width:min(230px,58vw);margin:18px auto 0}
+.verdict{min-height:96px;margin-top:20px;font-size:21px;line-height:1.3;opacity:0;transition:opacity .5s}
+.verdict.show{opacity:1}
+.verdict b{font:600 15px/1.4 "Cinzel",serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.verdict .note{display:block;font:600 22px/1.15 "Caveat",cursive;color:var(--pink);margin-top:6px}
+.row{display:flex;gap:12px;justify-content:center;margin-top:14px}
+.shake{animation:shake .9s ease-in-out}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg) translateX(-6px)}40%{transform:rotate(5deg) translateX(6px)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="moon" aria-hidden="true"></div>
+  <div>
+    <p class="for hand">for daniela 🖤</p>
+    <h1>so many dates<br>we gotta do 🥲</h1>
+    <p class="by hand">— you, october</p>
+    <p class="lede">so i made us a deck. every date we said we'd do is a card. flip through them, or let the cards decide (no logic allowed).</p>
+    <div class="cta">
+      <button class="btn primary" id="pull" type="button">pull a card 🔮</button>
+      <a class="btn ghost" href="#deck">see the deck</a>
+    </div>
+  </div>
+  <figure class="adhd">
+    <div class="tcard flip float" tabindex="0" role="button" aria-label="Page of Swords: tap to flip">
+      <div class="inner">
+        <div class="face front">
+          <img src="assets/page-of-swords.webp" alt="" decoding="async">
+          <span class="sym" aria-hidden="true">⚔️</span>
+          <div class="label"><span class="num">♠</span><span class="name">Page of Swords</span></div>
+        </div>
+        <div class="face back">
+          <span class="num">♠</span>
+          <h3>the adhd card</h3>
+          <p class="where">the one u left on my floor</p>
+          <p class="note">curious, eager, full of ideas. accurate</p>
+          <span class="when">card of the day</span>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="hand">card of the day</span>tap to flip it</figcaption>
+  </figure>
+</header>
+
+<section class="sec" style="padding-top:10px">
+  <div class="next">
+    <div class="tcard" aria-hidden="true">
+      <div class="inner"><div class="face front">
+        <img src="assets/portal.webp" alt="" decoding="async"><span class="sym">🌀</span>
+      </div></div>
+    </div>
+    <div>
+      <p class="kicker">next adventure</p>
+      <h2>Meow Wolf</h2>
+      <p>grapevine. u said it first, so it goes first. <span class="hand">pick a day 👀</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="deck">
+  <p class="kicker">the deck</p>
+  <h2 class="sec-title">every date we said we'd do</h2>
+  <p class="sec-sub">tap a card to flip it.</p>
+  <div class="deck" id="deckGrid"></div>
+</section>
+
+<section class="sec">
+  <p class="kicker">already did</p>
+  <h2 class="sec-title">ones we already did</h2>
+  <p class="sec-sub">polaroids coming soon 📸</p>
+  <div class="polaroids">
+    <figure class="polaroid" style="--r:-3deg"><div class="photo">✨<i>polaroid pending</i></div>
+      <figcaption>oct 15 · the first one<small>(i still owe u for leaving early)</small></figcaption></figure>
+    <figure class="polaroid" style="--r:2.5deg"><div class="photo">🎃<i>polaroid pending</i></div>
+      <figcaption>oct 17 · halloween store + tinies</figcaption></figure>
+    <figure class="polaroid" style="--r:-1.5deg"><div class="photo">📚<i>polaroid pending</i></div>
+      <figcaption>oct 24 · b&amp;n + ur first dumplings<small>+ my tarot reading + the movie w/ the divider</small></figcaption></figure>
+    <figure class="polaroid" style="--r:3deg"><div class="photo"><img src="assets/ouija.jpg" alt="candles and the ouija board, oct 29" loading="lazy" decoding="async"></div>
+      <figcaption>oct 29 · candlelight halloween classics<small>+ ouija after 👻</small></figcaption></figure>
+  </div>
+</section>
+
+<footer>
+  <p class="hand">new cards get added every time we say "we should do that"</p>
+  <p class="tiny">made by rishi 🖤 · p.s. it's fnaf, not terrifier</p>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="pull a card">
+    <p class="kicker">a decision not based on logic</p>
+    <p class="hand">(ur question of the day, answered)</p>
+    <div class="tcard" id="mcard">
+      <div class="inner">
+        <div class="face front"><img src="assets/card-back.webp" alt="" decoding="async"><span class="sym">🔮</span></div>
+        <div class="face reveal" id="mreveal"></div>
+      </div>
+    </div>
+    <p class="verdict" id="verdict" aria-live="polite"></p>
+    <div class="row">
+      <button class="btn ghost" id="again" type="button">pull again</button>
+      <button class="btn primary" id="deal" type="button">deal 🤝</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DECK = [
+  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",           where:"grapevine",                         note:"u brought it up halloween morning so it's going first", when:"this week? 👀",    sym:"🌀", next:true},
+  {id:"priestess",  num:"II",    name:"The High Priestess", title:"the tarot shop",      where:"a metaphysical shop",               note:"u pick my first deck. still waiting on that cheat sheet btw", when:"soon",        sym:"🔮"},
+  {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",        where:"dinner, dressed up",                note:"u hearted it so it's on here. no take backs",             when:"a fancy night",  sym:"🌹"},
+  {id:"hierophant", num:"V",     name:"The Hierophant",     title:"the trade",           where:"tarot ⇄ one piece",                 note:"u teach me tarot (w/ the shortcuts), i teach u one piece", when:"anytime",       sym:"🃏"},
+  {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",    where:"something scary, from the car",     note:"no divider this time 😤",                                 when:"a cold night",   sym:"🚗"},
+  {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",       where:"the escape room + the horror one",  note:"we bought them, now we gotta actually win",               when:"next time ur over", sym:"🎲"},
+  {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                   note:"architecturally sound. probably",                         when:"december",       sym:"🍪"},
+  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night ofc",                      note:"it better be cold",                                       when:"december",       sym:"⭐"},
+  {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",      where:"movie night",                       note:"lights off. i'll pretend i'm not scared",                 when:"movie night",    sym:"🌕"},
+  {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",           where:"one episode a day",                 note:"together only. no watching ahead 👀",                     when:"one a day",      sym:"🖥️"}
+];
+
+const $ = s => document.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const art = id => `assets/${id}.webp`;
+const frontHTML = (c, lazy) =>
+  `<img src="${art(c.id)}" alt="" ${lazy ? 'loading="lazy" ' : ""}decoding="async"><span class="sym" aria-hidden="true">${c.sym}</span>` +
+  `<div class="label"><span class="num">${c.num}</span><span class="name">${c.name}</span></div>`;
+const backHTML = c =>
+  `<span class="num">${c.num}</span><h3>${c.title}</h3><p class="where">${c.where}</p><p class="note">${c.note}</p><span class="when">${c.when}</span>`;
+
+function artFallback(root) {
+  root.querySelectorAll(".face img").forEach(img => {
+    const miss = () => img.closest(".face").classList.add("noart");
+    img.addEventListener("error", miss);
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute("loading") !== "lazy") miss();
+  });
+}
+
+function wireFlip(el) {
+  const toggle = () => el.classList.toggle("flipped");
+  el.addEventListener("click", toggle);
+  el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+}
+
+const grid = $("#deckGrid");
+DECK.forEach(c => {
+  const el = document.createElement("div");
+  el.className = "tcard flip" + (c.next ? " next-up" : "");
+  el.id = "card-" + c.id;
+  el.tabIndex = 0;
+  el.setAttribute("role", "button");
+  el.setAttribute("aria-label", `${c.name}: ${c.title}. tap to flip`);
+  el.innerHTML = `<div class="inner"><div class="face front">${frontHTML(c, true)}</div><div class="face back">${backHTML(c)}</div></div>`;
+  grid.appendChild(el);
+});
+document.querySelectorAll(".flip").forEach(wireFlip);
+artFallback(document);
+
+const modal = $("#modal"), mcard = $("#mcard"), verdict = $("#verdict");
+let last = -1, picked = DECK[0], timers = [];
+function pull() {
+  timers.forEach(clearTimeout); timers = [];
+  let i;
+  do { i = Math.floor(Math.random() * DECK.length); } while (i === last && DECK.length > 1);
+  last = i; picked = DECK[i];
+  const r = $("#mreveal");
+  r.className = "face reveal";
+  r.innerHTML = frontHTML(picked, false);
+  artFallback(r.parentElement);
+  mcard.classList.remove("flipped", "shake");
+  verdict.classList.remove("show");
+  void mcard.offsetWidth;
+  if (!reduce) mcard.classList.add("shake");
+  timers.push(setTimeout(() => mcard.classList.add("flipped"), reduce ? 0 : 900));
+  timers.push(setTimeout(() => {
+    verdict.innerHTML = `the cards have spoken:<br><b>${picked.num} · ${picked.name}</b><br>${picked.title}<span class="note">${picked.note}</span>`;
+    verdict.classList.add("show");
+  }, reduce ? 0 : 1600));
+}
+function openModal() { modal.hidden = false; document.body.style.overflow = "hidden"; pull(); $("#again").focus(); }
+function closeModal() { modal.hidden = true; document.body.style.overflow = ""; }
+$("#pull").addEventListener("click", openModal);
+$("#again").addEventListener("click", pull);
+$("#deal").addEventListener("click", () => {
+  closeModal();
+  const el = document.getElementById("card-" + picked.id);
+  el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+  el.classList.add("glow", "flipped");
+  setTimeout(() => el.classList.remove("glow"), 2800);
+});
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+</script>
+</body>
+</html>
