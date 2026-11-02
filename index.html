@@ -87,8 +87,7 @@ h1{font:400 clamp(92px,28vw,172px)/.78 "Nanum Pen Script",cursive;margin-top:12p
   background:var(--grain-dark),repeating-linear-gradient(180deg,transparent 0 23px,rgba(70,110,160,.17) 23px 24px),var(--paper)}
 .face.back::before{content:"";position:absolute;left:0;right:0;top:4.5%;height:1px;background:rgba(179,18,46,.5)}
 .back h3{font:400 clamp(29px,8vw,37px)/.9 "Nanum Pen Script",cursive}
-.back .where{font-size:clamp(10.5px,2.9vw,13px);line-height:1.25;color:#54424a}
-.back .note{font:400 clamp(20px,5.5vw,25px)/.98 "Nanum Pen Script",cursive;color:var(--red)}
+.back .where{font-size:clamp(11.5px,3.2vw,14px);line-height:1.3;color:#54424a}
 .back .when{margin-top:5px;font-size:10px;line-height:1.1;letter-spacing:.12em;text-transform:uppercase;color:var(--red);border:1.5px solid var(--red);border-radius:3px;padding:4px 7px 3px;transform:rotate(-5deg);opacity:.82}
 .flip{cursor:pointer;outline:none}
 .flip:focus-visible .face{outline:3px solid var(--pink)}
@@ -143,7 +142,7 @@ footer .tiny{font-size:13px;margin-top:10px}
 .verdict.show{opacity:1}
 .verdict b{display:block;margin-top:4px;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--pink)}
 .verdict .title{display:block;font:400 34px/.95 "Nanum Pen Script",cursive;color:var(--cream);margin-top:4px}
-.verdict .note{display:block;font:400 24px/1 "Nanum Pen Script",cursive;color:var(--pink);margin-top:3px}
+.verdict .where{display:block;font-size:13px;color:var(--muted);margin-top:5px}
 .row{display:flex;gap:12px;justify-content:center;margin-top:12px}
 .shake{animation:shake .9s ease-in-out}
 @keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg) translateX(-6px)}40%{transform:rotate(5deg) translateX(6px)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
@@ -242,25 +241,25 @@ footer .tiny{font-size:13px;margin-top:10px}
     <p class="verdict" id="verdict" aria-live="polite"></p>
     <div class="row">
       <button class="btn ghost" id="again" type="button">pull again</button>
-      <button class="btn primary" id="deal" type="button">deal 🤝</button>
+      <button class="btn primary" id="deal" type="button">this one</button>
     </div>
   </div>
 </div>
 
 <script>
 const DECK = [
-  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",           where:"grapevine",                         note:"this one's next", when:"next week 👀",    sym:"🌀", next:true},
-  {id:"priestess",  num:"II",    name:"The High Priestess", title:"the tarot shop",      where:"a metaphysical shop",               note:"u pick my first deck", when:"soon",        sym:"🔮"},
-  {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",        where:"dinner, dressed up",                note:"getting fancy for this one",             when:"a fancy night",  sym:"🌹"},
-  {id:"hierophant", num:"V",     name:"The Hierophant",     title:"the trade",           where:"tarot ⇄ one piece",                 note:"u teach me tarot, i teach u one piece", when:"anytime",       sym:"🃏"},
-  {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",    where:"something scary, from the car",     note:"u pick the movie, i'll bring the snacks 🍿",              when:"a cold night",   sym:"🚗"},
-  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore + a picnic", where:"vintage bookstore, downtown",  note:"bring a book, i'll bring the blanket",                    when:"a nice day",     sym:"📚"},
-  {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",       where:"the escape room + the horror one",  note:"we bought them, now we gotta actually win",               when:"next time ur over", sym:"🎲"},
-  {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                   note:"architecturally sound. probably",                         when:"december",       sym:"🍪"},
-  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night ofc",                      note:"hot chocolate required",                                       when:"december",       sym:"⭐"},
-  {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",      where:"movie night",                       note:"lights off. i'll pretend i'm not scared",                 when:"movie night",    sym:"🌕"},
-  {id:"sun",        num:"XIX",   name:"The Sun",            title:"Indian food",         where:"my pick",                           note:"i'm ordering for us",                                     when:"soon",           sym:"🍛"},
-  {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",           where:"one episode a day",                 note:"together only. no watching ahead 👀",                     when:"one a day",      sym:"🖥️"}
+  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",           where:"grapevine",                                  when:"next week",  sym:"🌀", next:true},
+  {id:"priestess",  num:"II",    name:"The High Priestess", title:"the tarot shop",      where:"a metaphysical shop. u pick my first deck",  when:"soon",       sym:"🔮"},
+  {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",        where:"dinner, dressed up",                         when:"soon",       sym:"🌹"},
+  {id:"hierophant", num:"V",     name:"The Hierophant",     title:"tarot + one piece",   where:"u teach me tarot, i teach u one piece",      when:"anytime",    sym:"🃏"},
+  {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",    where:"something scary",                            when:"a cold night", sym:"🚗"},
+  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore + a picnic", where:"vintage bookstore, downtown",      when:"a nice day", sym:"📚"},
+  {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",       where:"the escape room + the horror one",           when:"next time ur over", sym:"🎲"},
+  {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                            when:"december",   sym:"🍪"},
+  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night",                                   when:"december",   sym:"⭐"},
+  {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",      where:"movie night",                                when:"soon",       sym:"🌕"},
+  {id:"sun",        num:"XIX",   name:"The Sun",            title:"Indian food",         where:"my pick",                                    when:"soon",       sym:"🍛"},
+  {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",           where:"one episode a day",                          when:"anytime",    sym:"🖥️"}
 ];
 const ROT = [-1.8, 1.4, -1, 2, -1.5, 1, -2.2, 1.6, -.8, 1.9, -1.3, 1.2];
 
@@ -271,7 +270,7 @@ const frontHTML = (c, lazy) =>
   `<div class="art"><img src="${art(c.id)}" alt="" ${lazy ? 'loading="lazy" ' : ""}decoding="async"><span class="sym" aria-hidden="true">${c.sym}</span></div>` +
   `<div class="label"><span class="num">${c.num}</span><span class="name">${c.name}</span></div>`;
 const backHTML = c =>
-  `<span class="num">${c.num}</span><h3>${c.title}</h3><p class="where">${c.where}</p><p class="note">${c.note}</p><span class="when">${c.when}</span>`;
+  `<span class="num">${c.num}</span><h3>${c.title}</h3><p class="where">${c.where}</p><span class="when">${c.when}</span>`;
 
 function artFallback(root) {
   root.querySelectorAll(".art img").forEach(img => {
@@ -319,7 +318,7 @@ function pull() {
   if (!reduce) mcard.classList.add("shake");
   timers.push(setTimeout(() => mcard.classList.add("flipped"), reduce ? 0 : 900));
   timers.push(setTimeout(() => {
-    verdict.innerHTML = `the cards have spoken:<b>${picked.num} · ${picked.name}</b><span class="title">${picked.title}</span><span class="note">${picked.note}</span>`;
+    verdict.innerHTML = `<b>${picked.num} · ${picked.name}</b><span class="title">${picked.title}</span><span class="where">${picked.where}</span>`;
     verdict.classList.add("show");
   }, reduce ? 0 : 1600));
 }
