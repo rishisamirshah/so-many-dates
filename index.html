@@ -190,9 +190,9 @@ footer .tiny{font-size:13px;margin-top:10px}
   <div class="ticket">
     <div class="stub" aria-hidden="true"><span>admit</span><b>2</b></div>
     <div class="tmain">
-      <p class="kicker">next adventure</p>
-      <h2>Meow Wolf</h2>
-      <p>grapevine. <span class="hand">pick a day 👀</span></p>
+      <p class="kicker">friday, nov 6</p>
+      <h2 id="fridayTitle">???</h2>
+      <p><span id="fridayWhere">pull a card to pick it.</span> <span class="hand">saturday is barber's + a picnic</span></p>
     </div>
   </div>
 </section>
@@ -231,7 +231,7 @@ footer .tiny{font-size:13px;margin-top:10px}
 
 <div class="modal" id="modal" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-label="pull a card">
-    <p class="kicker">let the cards pick</p>
+    <p class="kicker">let the cards pick friday</p>
     <div class="tcard" id="mcard">
       <div class="inner">
         <div class="face front"><div class="art whole" style="bottom:4.4%"><img src="assets/card-back.webp" alt="" decoding="async"><span class="sym">🔮</span></div></div>
@@ -248,19 +248,21 @@ footer .tiny{font-size:13px;margin-top:10px}
 
 <script>
 const DECK = [
-  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",           where:"grapevine",                                  when:"next week",  sym:"🌀", next:true},
+  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",           where:"grapevine",                                  when:"anytime",    sym:"🌀"},
   {id:"priestess",  num:"II",    name:"The High Priestess", title:"the tarot shop",      where:"a metaphysical shop. u pick my first deck",  when:"soon",       sym:"🔮"},
   {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",        where:"dinner, dressed up",                         when:"soon",       sym:"🌹"},
   {id:"hierophant", num:"V",     name:"The Hierophant",     title:"tarot + one piece",   where:"u teach me tarot, i teach u one piece",      when:"anytime",    sym:"🃏"},
   {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",    where:"something scary",                            when:"a cold night", sym:"🚗"},
-  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore + a picnic", where:"vintage bookstore, downtown",      when:"a nice day", sym:"📚"},
+  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore + a picnic", where:"vintage bookstore, downtown",      when:"saturday, nov 7", sym:"📚", draw:false},
   {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",       where:"the escape room + the horror one",           when:"next time ur over", sym:"🎲"},
-  {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                            when:"december",   sym:"🍪"},
-  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night",                                   when:"december",   sym:"⭐"},
+  {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                            when:"december",   sym:"🍪", draw:false},
+  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night",                                   when:"december",   sym:"⭐", draw:false},
   {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",      where:"movie night",                                when:"soon",       sym:"🌕"},
   {id:"sun",        num:"XIX",   name:"The Sun",            title:"Indian food",         where:"my pick",                                    when:"soon",       sym:"🍛"},
+  {id:"world",      num:"XXI",   name:"The World",          title:"Gaylord Christmas village", where:"gaylord texan, grapevine",     when:"after nov 13", sym:"🎄", draw:false},
   {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",           where:"one episode a day",                          when:"anytime",    sym:"🖥️"}
 ];
+const POOL = DECK.filter(c => c.draw !== false);
 const ROT = [-1.8, 1.4, -1, 2, -1.5, 1, -2.2, 1.6, -.8, 1.9, -1.3, 1.2];
 
 const $ = s => document.querySelector(s);
@@ -301,13 +303,22 @@ DECK.forEach((c, i) => {
 document.querySelectorAll(".flip").forEach(wireFlip);
 artFallback(document);
 
+function setFriday(c) {
+  $("#fridayTitle").textContent = c.title;
+  $("#fridayWhere").textContent = c.where + ".";
+}
+try {
+  const saved = POOL.find(c => c.id === localStorage.getItem("fridayCard"));
+  if (saved) setFriday(saved);
+} catch (e) {}
+
 const modal = $("#modal"), mcard = $("#mcard"), verdict = $("#verdict");
-let last = -1, picked = DECK[0], timers = [];
+let last = -1, picked = POOL[0], timers = [];
 function pull() {
   timers.forEach(clearTimeout); timers = [];
   let i;
-  do { i = Math.floor(Math.random() * DECK.length); } while (i === last && DECK.length > 1);
-  last = i; picked = DECK[i];
+  do { i = Math.floor(Math.random() * POOL.length); } while (i === last && POOL.length > 1);
+  last = i; picked = POOL[i];
   const r = $("#mreveal");
   r.className = "face reveal";
   r.innerHTML = frontHTML(picked, false);
@@ -327,6 +338,8 @@ function closeModal() { modal.hidden = true; document.body.style.overflow = ""; 
 $("#pull").addEventListener("click", openModal);
 $("#again").addEventListener("click", pull);
 $("#deal").addEventListener("click", () => {
+  setFriday(picked);
+  try { localStorage.setItem("fridayCard", picked.id); } catch (e) {}
   closeModal();
   const el = document.getElementById("card-" + picked.id);
   el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
