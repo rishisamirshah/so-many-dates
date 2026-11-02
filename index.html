@@ -307,10 +307,33 @@ function setFriday(c) {
   $("#fridayTitle").textContent = c.title;
   $("#fridayWhere").textContent = c.where + ".";
 }
-try {
-  const saved = POOL.find(c => c.id === localStorage.getItem("fridayCard"));
-  if (saved) setFriday(saved);
-} catch (e) {}
+// shared Firestore doc, so a pick on one phone shows on the other
+const FRIDAY_URL = "https://firestore.googleapis.com/v1/projects/our-dates-rishi/databases/(default)/documents/picks/friday";
+const fridayBlank = {title: $("#fridayTitle").textContent, where: $("#fridayWhere").textContent};
+async function loadFriday() {
+  try {
+    const r = await fetch(FRIDAY_URL, {cache: "no-store"});
+    if (r.status === 404) {
+      $("#fridayTitle").textContent = fridayBlank.title;
+      $("#fridayWhere").textContent = fridayBlank.where;
+      return;
+    }
+    if (!r.ok) return;
+    const d = await r.json();
+    const c = POOL.find(x => x.id === d.fields?.card?.stringValue);
+    if (c) setFriday(c);
+  } catch (e) {}
+}
+function saveFriday(c) {
+  fetch(FRIDAY_URL, {
+    method: "PATCH",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({fields: {card: {stringValue: c.id}}})
+  }).then(r => { if (!r.ok) throw new Error(r.status); })
+    .catch(() => { $("#fridayWhere").textContent = "that didn't save, pull again."; });
+}
+loadFriday();
+document.addEventListener("visibilitychange", () => { if (!document.hidden) loadFriday(); });
 
 const modal = $("#modal"), mcard = $("#mcard"), verdict = $("#verdict");
 let last = -1, picked = POOL[0], timers = [];
@@ -339,7 +362,7 @@ $("#pull").addEventListener("click", openModal);
 $("#again").addEventListener("click", pull);
 $("#deal").addEventListener("click", () => {
   setFriday(picked);
-  try { localStorage.setItem("fridayCard", picked.id); } catch (e) {}
+  saveFriday(picked);
   closeModal();
   const el = document.getElementById("card-" + picked.id);
   el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
