@@ -255,6 +255,7 @@ const DECK = [
   {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",    where:"something scary",                            when:"a cold night", sym:"🚗"},
   {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore + a picnic", where:"vintage bookstore, downtown",      when:"saturday, nov 7", sym:"📚", draw:false},
   {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",       where:"the escape room + the horror one",           when:"next time ur over", sym:"🎲"},
+  {id:"temperance", num:"XIV",   name:"Temperance",         title:"a pasta making class", where:"at a fancy italian place",                  when:"soon",       sym:"🍝"},
   {id:"tower",      num:"XVI",   name:"The Tower",          title:"a gingerbread house", where:"a realistic one",                            when:"december",   sym:"🍪", draw:false},
   {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",    where:"at night",                                   when:"december",   sym:"⭐", draw:false},
   {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",      where:"movie night",                                when:"soon",       sym:"🌕"},
@@ -333,7 +334,19 @@ function saveFriday(c) {
     .catch(() => { $("#fridayWhere").textContent = "that didn't save, pull again."; });
 }
 loadFriday();
-document.addEventListener("visibilitychange", () => { if (!document.hidden) loadFriday(); });
+// an old tab left open picks up new versions when she comes back to it
+const BUILD = "2026-11-02-pasta";
+function checkVersion() {
+  fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
+    .then(r => r.ok ? r.text() : "")
+    .then(v => {
+      v = v.trim();
+      if (v && v !== BUILD && $("#modal").hidden && !location.search.includes("v=" + v)) location.replace(location.pathname + "?v=" + v);
+    })
+    .catch(() => {});
+}
+checkVersion();
+document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadFriday(); checkVersion(); } });
 
 const modal = $("#modal"), mcard = $("#mcard"), verdict = $("#verdict");
 let last = -1, picked = POOL[0], timers = [];
