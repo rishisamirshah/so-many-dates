@@ -73,6 +73,11 @@ h1{font:400 clamp(92px,28vw,172px)/.78 "Nanum Pen Script",cursive;margin-top:12p
 .face{position:absolute;inset:0;border-radius:7px 9px 6px 8px;color:var(--ink);backface-visibility:hidden;-webkit-backface-visibility:hidden;
   background:var(--grain-dark),var(--paper);box-shadow:2px 4px 0 rgba(0,0,0,.45),0 10px 20px rgba(0,0,0,.35)}
 .face.back,.face.reveal{transform:rotateY(180deg)}
+/* Safari flattens the flip and shows the mirrored back on top; swap sides at the halfway point instead of relying on backface-visibility */
+.face.front{visibility:visible;transition:visibility 0s linear .36s}
+.face.back,.face.reveal{visibility:hidden;transition:visibility 0s linear .36s}
+.tcard.flipped .face.front{visibility:hidden}
+.tcard.flipped .face.back,.tcard.flipped .face.reveal{visibility:visible}
 .art{position:absolute;left:6.5%;right:6.5%;top:4.4%;bottom:19%;overflow:hidden;background:#160a10;box-shadow:0 0 0 1px rgba(28,18,20,.55)}
 .art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0;transform-origin:50% 0;transform:scale(1.14) translateY(-2.5%);filter:saturate(.86) contrast(.97) sepia(.07)}
 .art::after{content:"";position:absolute;inset:0;background-image:var(--grain-dark);pointer-events:none}
@@ -336,7 +341,7 @@ function saveFriday(c) {
 }
 loadFriday();
 // an old tab left open picks up new versions when she comes back to it
-const BUILD = "2026-11-03-art";
+const BUILD = "2026-11-03-flip";
 function checkVersion() {
   fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
     .then(r => r.ok ? r.text() : "")
