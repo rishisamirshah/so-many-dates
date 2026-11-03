@@ -268,7 +268,8 @@ const ROT = [-1.8, 1.4, -1, 2, -1.5, 1, -2.2, 1.6, -.8, 1.9, -1.3, 1.2];
 
 const $ = s => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const art = id => `assets/${id}.webp`;
+const ART_V = "2026-11-03";
+const art = id => `assets/${id}.webp?v=${ART_V}`;
 const frontHTML = (c, lazy) =>
   `<div class="art"><img src="${art(c.id)}" alt="" ${lazy ? 'loading="lazy" ' : ""}decoding="async"><span class="sym" aria-hidden="true">${c.sym}</span></div>` +
   `<div class="label"><span class="num">${c.num}</span><span class="name">${c.name}</span></div>`;
@@ -335,7 +336,7 @@ function saveFriday(c) {
 }
 loadFriday();
 // an old tab left open picks up new versions when she comes back to it
-const BUILD = "2026-11-02-pasta";
+const BUILD = "2026-11-03-art";
 function checkVersion() {
   fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
     .then(r => r.ok ? r.text() : "")
