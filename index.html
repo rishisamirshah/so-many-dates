@@ -301,10 +301,10 @@ const DECK = [
 const DID = [
   {id:"nov-7-barbers", date:"nov 7",  text:"barber's bookstore", img:"assets/photos/nov7-barbers.jpg?v=2026-11-09", alt:"an aisle at barber's bookstore"},
   {id:"nov-7-water",   date:"nov 7",  text:"the water gardens + panj tara", more:"her first indian food", img:"assets/photos/nov7-water.jpg?v=2026-11-09", alt:"the water gardens"},
-  {id:"nov-6",         date:"nov 6",  text:"book fair in the park under the stars", more:"blue bonnet circle"},
+  {id:"nov-6",         date:"nov 6",  text:"book fair in the park under the stars", more:"blue bonnet circle", img:"assets/photos/nov6-park.jpg?v=2026-11-09", alt:"the garden in the middle of blue bonnet circle"},
   {id:"oct-29",        date:"oct 29", text:"candlelight halloween classics", more:"+ ouija after", img:"assets/ouija.jpg?v=3", alt:"candles and the ouija board"},
-  {id:"oct-24",        date:"oct 24", text:"b&n + thai", more:"+ tarot + a late movie"},
-  {id:"oct-17",        date:"oct 17", text:"halloween store + tinies"},
+  {id:"oct-24",        date:"oct 24", text:"b&n + thai", more:"+ tarot + a late movie", img:"assets/photos/oct24-padthai.jpg?v=2026-11-09", alt:"a plate of pad thai"},
+  {id:"oct-17",        date:"oct 17", text:"halloween store + tinies", img:"assets/photos/oct17-tinies.jpg?v=2026-11-09", alt:"a chile relleno at tinies"},
   {id:"oct-15",        date:"oct 15", text:"the first one"}
 ];
 const CREDITS = [
@@ -331,7 +331,10 @@ const CREDITS = [
   ["Bell Labs Holmdel", "Acroterion, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Bell_Labs_NJ1.jpg"],
   ["Thompson's Bookstore", "thompsons-bookstore.com", "https://thompsons-bookstore.com/"],
   ["lego build", "InSapphoWeTrust, CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Lego_Modular_-_Set_10224_Town_Hall_(8310512787).jpg"],
-  ["Parade of Lights", "fortworthparadeoflights.org", "https://fortworthparadeoflights.org/"]
+  ["Parade of Lights", "fortworthparadeoflights.org", "https://fortworthparadeoflights.org/"],
+  ["Blue Bonnet Circle", "City of Fort Worth", "https://fortworthtexas.gov/departments/parks/parks-and-trails/blue-bonnet-circle"],
+  ["pad thai", "Andy Li, CC0", "https://commons.wikimedia.org/wiki/File:Pad_Thai_Noodles_-_Little_Thai,_Brighton_2024-03-21.jpg"],
+  ["Tinies", "tiniesfw.com", "https://www.tiniesfw.com/"]
 ];
 const POOL = DECK.filter(c => c.draw !== false && !c.done);
 
@@ -622,7 +625,7 @@ async function loadAll() {
 loadAll();
 
 // an old tab left open picks up new versions when she comes back to it, unless she's mid-comment
-const BUILD = "2026-11-09-afterdark";
+const BUILD = "2026-11-09-pics";
 const busy = () => !$("#modal").hidden || !sheet.hidden || $("#ideaTitle").value.trim() || $("#ideaWhere").value.trim() || Object.values(drafts).some(v => v.trim());
 function checkVersion() {
   fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
