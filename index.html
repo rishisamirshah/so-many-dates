@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
 <meta name="theme-color" content="#13221C">
-<title>our dates</title>
-<meta property="og:title" content="our dates">
-<meta property="og:description" content="a little deck of our date ideas">
+<title>Our Dates</title>
+<meta property="og:title" content="Our Dates">
+<meta property="og:description" content="A little deck of our date ideas">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rishisamirshah.github.io/so-many-dates/">
-<meta property="og:image" content="https://rishisamirshah.github.io/so-many-dates/assets/og.jpg?v=2026-11-09">
+<meta property="og:image" content="https://rishisamirshah.github.io/so-many-dates/assets/og.jpg?v=2026-11-09-caps">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -100,7 +100,7 @@ h1{font:italic 400 clamp(66px,21vw,92px)/.9 "Bodoni Moda",serif;margin-top:10px;
 .cdot[hidden]{display:none}
 .flip{cursor:pointer;outline:none}
 .flip:focus-visible .face{outline:2px solid var(--brass);outline-offset:2px}
-.tcard.next-up::after{content:"next";position:absolute;top:-10px;left:50%;z-index:3;transform:translateX(-50%) rotate(-2deg);font:600 10.5px/1 "Jost",sans-serif;letter-spacing:.22em;text-transform:uppercase;background:var(--brass);color:var(--bg);padding:5px 9px 4px}
+.tcard.next-up::after{content:"Next";position:absolute;top:-10px;left:50%;z-index:3;transform:translateX(-50%) rotate(-2deg);font:600 10.5px/1 "Jost",sans-serif;letter-spacing:.22em;text-transform:uppercase;background:var(--brass);color:var(--bg);padding:5px 9px 4px}
 .tcard.glow .face{outline:2px solid var(--brass);outline-offset:3px}
 
 /* comment buttons */
@@ -184,87 +184,87 @@ footer{text-align:center;padding-top:44px;padding-bottom:50px;color:var(--muted)
 
 <div class="top">
   <header class="hero">
-    <p class="caps">rishi &amp; daniela</p>
-    <h1>our dates</h1>
+    <p class="caps">Rishi &amp; Daniela</p>
+    <h1>Our Dates</h1>
     <div class="orn" aria-hidden="true">◆</div>
-    <p class="lede">i made us a deck. every date idea is a card. flip through them, or let the cards pick.</p>
+    <p class="lede">I made us a deck. Every date idea is a card. Flip through them, or let the cards pick.</p>
     <div class="cta">
-      <button class="btn solid" id="pull" type="button">pull a card</button>
-      <a class="btn" href="#deck">see the deck</a>
+      <button class="btn solid" id="pull" type="button">Pull a card</button>
+      <a class="btn" href="#deck">See the deck</a>
     </div>
   </header>
-  <section class="ticket" aria-label="next date">
-    <div class="stub"><span>admit two</span></div>
+  <section class="ticket" aria-label="Next date">
+    <div class="stub"><span>Admit Two</span></div>
     <div class="tmain">
-      <p class="caps">next date</p>
-      <h2 id="nextTitle">to be drawn</h2>
-      <p id="nextWhere">pull a card to pick it.</p>
+      <p class="caps">Next date</p>
+      <h2 id="nextTitle">To be drawn</h2>
+      <p id="nextWhere">Pull a card to pick it.</p>
       <div class="seen" id="seen"></div>
     </div>
   </section>
 </div>
 
 <section class="sec wrap" id="deck">
-  <p class="caps">the deck</p>
-  <h2>every date idea</h2>
-  <p class="sub">tap a card to flip it. leave a comment on the back.</p>
+  <p class="caps">The deck</p>
+  <h2>Every Date Idea</h2>
+  <p class="sub">Tap a card to flip it. Leave a comment on the back.</p>
   <div class="deck" id="deckGrid"></div>
 </section>
 
 <section class="sec wrap" id="ideas">
-  <p class="caps">ur ideas</p>
-  <h2>add a date idea</h2>
-  <p class="sub">got one? type it in. it goes straight into the deck.</p>
+  <p class="caps">Your ideas</p>
+  <h2>Add a Date Idea</h2>
+  <p class="sub">Got one? Type it in. It goes straight into the deck.</p>
   <form class="form" id="ideaForm" autocomplete="off">
-    <input class="field" id="ideaTitle" maxlength="80" placeholder="a date idea…" aria-label="a date idea">
-    <input class="field" id="ideaWhere" maxlength="80" placeholder="where or when (optional)" aria-label="where or when, optional">
-    <div class="who" role="group" aria-label="who is this from"><span>from</span><button class="chip" type="button" data-who="daniela" aria-pressed="true">daniela</button><button class="chip" type="button" data-who="rishi" aria-pressed="false">rishi</button></div>
-    <button class="btn solid" id="ideaAdd" type="submit">add it</button>
+    <input class="field" id="ideaTitle" maxlength="80" placeholder="A date idea…" aria-label="A date idea">
+    <input class="field" id="ideaWhere" maxlength="80" placeholder="Where or when (optional)" aria-label="Where or when (optional)">
+    <div class="who" role="group" aria-label="Who is this from?"><span>From</span><button class="chip" type="button" data-who="daniela" aria-pressed="true">Daniela</button><button class="chip" type="button" data-who="rishi" aria-pressed="false">Rishi</button></div>
+    <button class="btn solid" id="ideaAdd" type="submit">Add it</button>
     <p class="status" id="ideaStatus" aria-live="polite"></p>
   </form>
 </section>
 
 <section class="sec wrap" id="did">
-  <p class="caps">already did</p>
-  <h2>ones we already did</h2>
+  <p class="caps">Already done</p>
+  <h2>The Ones We've Done</h2>
   <div class="prints" id="prints"></div>
 </section>
 
 <footer class="wrap">
-  <span class="end">new cards get added whenever we think of one</span>
-  <p>made by rishi</p>
-  <details class="credits"><summary>photo credits</summary><ul id="credits"></ul></details>
+  <span class="end">A new card gets added whenever we think of one.</span>
+  <p>Made by Rishi</p>
+  <details class="credits"><summary>Photo credits</summary><ul id="credits"></ul></details>
 </footer>
 
 <div class="modal" id="modal" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-label="pull a card">
-    <p class="caps">let the cards pick the next date</p>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Pull a card">
+    <p class="caps">Let the cards pick the next date</p>
     <div class="tcard" id="mcard">
       <div class="inner">
         <div class="face front cardback"><div class="in">
           <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="#C9A45C" stroke-width="1.2"><path d="M30 4 L37 23 L56 30 L37 37 L30 56 L23 37 L4 30 L23 23 Z"/><circle cx="30" cy="30" r="9"/><circle cx="30" cy="30" r="2.2" fill="#C9A45C"/></svg>
-          <span class="caps">our dates</span>
+          <span class="caps">Our Dates</span>
         </div></div>
         <div class="face reveal" id="mreveal"></div>
       </div>
     </div>
     <p class="verdict" id="verdict" aria-live="polite"></p>
     <div class="row">
-      <button class="btn" id="again" type="button">pull again</button>
-      <button class="btn solid" id="deal" type="button">this one</button>
+      <button class="btn" id="again" type="button">Pull again</button>
+      <button class="btn solid" id="deal" type="button">This one</button>
     </div>
   </div>
 </div>
 
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-box" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <button class="x" id="sheetClose" type="button">close</button>
-    <p class="caps">comments</p>
+    <button class="x" id="sheetClose" type="button">Close</button>
+    <p class="caps">Comments</p>
     <h3 id="sheetTitle"></h3>
     <ul class="clist" id="clist"></ul>
-    <textarea class="field" id="ctext" rows="3" maxlength="500" placeholder="leave a comment…" aria-label="leave a comment"></textarea>
-    <div class="who" role="group" aria-label="who is this from"><span>from</span><button class="chip" type="button" data-who="daniela" aria-pressed="true">daniela</button><button class="chip" type="button" data-who="rishi" aria-pressed="false">rishi</button></div>
-    <button class="btn solid" id="cpost" type="button">post it</button>
+    <textarea class="field" id="ctext" rows="3" maxlength="500" placeholder="Leave a comment…" aria-label="Leave a comment"></textarea>
+    <div class="who" role="group" aria-label="Who is this from?"><span>From</span><button class="chip" type="button" data-who="daniela" aria-pressed="true">Daniela</button><button class="chip" type="button" data-who="rishi" aria-pressed="false">Rishi</button></div>
+    <button class="btn solid" id="cpost" type="button">Post it</button>
     <p class="status" id="cstatus" aria-live="polite"></p>
   </div>
 </div>
@@ -272,68 +272,68 @@ footer{text-align:center;padding-top:44px;padding-bottom:50px;color:var(--muted)
 <script>
 const ART_V = "2026-11-09";
 const DECK = [
-  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",                   where:"the real unreal, grapevine",                     when:"anytime"},
-  {id:"magician",   num:"I",     name:"The Magician",       title:"baking + cooking",            where:"a whole meal + dessert, together",               when:"soon"},
-  {id:"priestess",  num:"II",    name:"The High Priestess", title:"the tarot shop",              where:"a metaphysical shop. u pick my first deck",      when:"soon"},
-  {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",                where:"dinner, dressed up",                             when:"soon"},
-  {id:"emperor",    num:"IV",    name:"The Emperor",        title:"the candy store",             where:"my candy shop",                                  when:"anytime"},
-  {id:"hierophant", num:"V",     name:"The Hierophant",     title:"tarot + one piece",           where:"u teach me tarot, i teach u one piece",          when:"anytime"},
-  {id:"lovers",     num:"VI",    name:"The Lovers",         title:"a picnic",                    where:"somewhere pretty",                               when:"a nice day"},
-  {id:"chariot",    num:"VII",   name:"The Chariot",        title:"a drive-in movie",            where:"something scary",                                when:"a cold night"},
-  {id:"strength",   num:"VIII",  name:"Strength",           title:"skating at the galleria",     where:"the rink under the big glass roof",              when:"anytime"},
-  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore",          where:"vintage bookstore, downtown fort worth",         when:"december",          draw:false},
-  {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"our B&N games",               where:"the escape room + the horror one",               when:"next time ur over"},
-  {id:"hanged",     num:"XII",   name:"The Hanged Man",     title:"make a snowman",              where:"the first real snow",                            when:"whenever it snows", draw:false},
-  {id:"temperance", num:"XIV",   name:"Temperance",         title:"a pasta making class",        where:"at a fancy italian place",                       when:"soon"},
-  {id:"devil",      num:"XV",    name:"The Devil",          title:"The Archibald",               where:"rooftop bar + the pizza, downtown fort worth",   when:"soon"},
-  {id:"tower",      num:"XVI",   name:"The Tower",          title:"gingerbread house + cookies", where:"a realistic one",                                when:"december",          draw:false},
-  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas lights",            where:"at night",                                       when:"december",          draw:false},
-  {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",              where:"movie night",                                    when:"soon"},
-  {id:"sun",        num:"XIX",   name:"The Sun",            title:"Indian food",                 where:"panj tara, frisco",                              when:"did it nov 7",      done:true},
-  {id:"judgement",  num:"XX",    name:"Judgement",          title:"karaoke",                     where:"on my birthday",                                 when:"jan 18",            draw:false},
-  {id:"world",      num:"XXI",   name:"The World",          title:"Gaylord Christmas village",   where:"gaylord texan, grapevine",                       when:"after nov 13",      draw:false},
-  {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",                   where:"one episode a day",                              when:"anytime"},
-  {id:"cups",       num:"♥︎", name:"Page of Cups",     title:"Thompson's Bookstore",        where:"the book bar next door, speakeasy downstairs",   when:"soon"},
-  {id:"pentacles",  num:"♦︎", name:"Eight of Pentacles", title:"lego date",                 where:"pick a set, build it together",                  when:"anytime"},
-  {id:"wands",      num:"♣︎", name:"Ace of Wands",     title:"the Parade of Lights",        where:"downtown fort worth",                            when:"sun, nov 22, 6 pm", draw:false}
+  {id:"portal",     num:"0",     name:"The Portal",         title:"Meow Wolf",                     where:"The Real Unreal, Grapevine",                          when:"Anytime"},
+  {id:"magician",   num:"I",     name:"The Magician",       title:"Baking and Cooking",            where:"A whole meal and dessert, together",                  when:"Soon"},
+  {id:"priestess",  num:"II",    name:"The High Priestess", title:"The Tarot Shop",                where:"A metaphysical shop where you pick my first deck",    when:"Soon"},
+  {id:"empress",    num:"III",   name:"The Empress",        title:"Hudson House",                  where:"Dinner, dressed up",                                  when:"Soon"},
+  {id:"emperor",    num:"IV",    name:"The Emperor",        title:"The Candy Store",               where:"My candy shop",                                       when:"Anytime"},
+  {id:"hierophant", num:"V",     name:"The Hierophant",     title:"Tarot and One Piece",           where:"You teach me tarot, and I teach you One Piece",       when:"Anytime"},
+  {id:"lovers",     num:"VI",    name:"The Lovers",         title:"A Picnic",                      where:"Somewhere pretty",                                    when:"On a nice day"},
+  {id:"chariot",    num:"VII",   name:"The Chariot",        title:"A Drive-In Movie",              where:"Something scary",                                     when:"On a cold night"},
+  {id:"strength",   num:"VIII",  name:"Strength",           title:"Skating at the Galleria",       where:"The rink under the big glass roof",                   when:"Anytime"},
+  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore",            where:"A vintage bookstore in downtown Fort Worth",          when:"December",          draw:false},
+  {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"Our B&N Games",                 where:"The escape room and the horror one",                  when:"Next time you're over"},
+  {id:"hanged",     num:"XII",   name:"The Hanged Man",     title:"Make a Snowman",                where:"In the first real snow",                              when:"Whenever it snows", draw:false},
+  {id:"temperance", num:"XIV",   name:"Temperance",         title:"A Pasta-Making Class",          where:"At a fancy Italian place",                            when:"Soon"},
+  {id:"devil",      num:"XV",    name:"The Devil",          title:"The Archibald",                 where:"The rooftop bar and the pizza in downtown Fort Worth", when:"Soon"},
+  {id:"tower",      num:"XVI",   name:"The Tower",          title:"Gingerbread House and Cookies", where:"A realistic one",                                     when:"December",          draw:false},
+  {id:"star",       num:"XVII",  name:"The Star",           title:"Christmas Lights",              where:"At night",                                            when:"December",          draw:false},
+  {id:"moon",       num:"XVIII", name:"The Moon",           title:"Shutter Island",                where:"Movie night",                                         when:"Soon"},
+  {id:"sun",        num:"XIX",   name:"The Sun",            title:"Indian Food",                   where:"Panj Tara, Frisco",                                   when:"Done Nov 7",        done:true},
+  {id:"judgement",  num:"XX",    name:"Judgement",          title:"Karaoke",                       where:"On my birthday",                                      when:"Jan 18",            draw:false},
+  {id:"world",      num:"XXI",   name:"The World",          title:"Gaylord Christmas Village",     where:"Gaylord Texan, Grapevine",                            when:"After Nov 13",      draw:false},
+  {id:"innie",      num:"XXII",  name:"The Innie",          title:"Severance",                     where:"One episode a day",                                   when:"Anytime"},
+  {id:"cups",       num:"♥︎", name:"Page of Cups",     title:"Thompson's Bookstore",        where:"The book bar next door, with a speakeasy downstairs", when:"Soon"},
+  {id:"pentacles",  num:"♦︎", name:"Eight of Pentacles", title:"Lego Date",                 where:"Pick a set and build it together",               when:"Anytime"},
+  {id:"wands",      num:"♣︎", name:"Ace of Wands",     title:"The Parade of Lights",        where:"Downtown Fort Worth",                            when:"Sun, Nov 22, 6 PM", draw:false}
 ];
 // newest first, the order they show on the page
 const DID = [
-  {id:"nov-7-barbers", date:"nov 7",  text:"barber's bookstore", img:"assets/photos/nov7-barbers.jpg?v=2026-11-09", alt:"an aisle at barber's bookstore"},
-  {id:"nov-7-water",   date:"nov 7",  text:"the water gardens + panj tara", more:"her first indian food", img:"assets/photos/nov7-water.jpg?v=2026-11-09", alt:"the water gardens"},
-  {id:"nov-6",         date:"nov 6",  text:"book fair in the park under the stars", more:"blue bonnet circle", img:"assets/photos/nov6-park.jpg?v=2026-11-09", alt:"the garden in the middle of blue bonnet circle"},
-  {id:"oct-29",        date:"oct 29", text:"candlelight halloween classics", more:"+ ouija after", img:"assets/ouija.jpg?v=3", alt:"candles and the ouija board"},
-  {id:"oct-24",        date:"oct 24", text:"b&n + thai", more:"+ tarot + a late movie", img:"assets/photos/oct24-padthai.jpg?v=2026-11-09", alt:"a plate of pad thai"},
-  {id:"oct-17",        date:"oct 17", text:"halloween store + tinies", img:"assets/photos/oct17-tinies.jpg?v=2026-11-09", alt:"a chile relleno at tinies"},
-  {id:"oct-15",        date:"oct 15", text:"the first one"}
+  {id:"nov-7-barbers", date:"Nov 7",  text:"Barber's Bookstore", img:"assets/photos/nov7-barbers.jpg?v=2026-11-09", alt:"An aisle at Barber's Bookstore"},
+  {id:"nov-7-water",   date:"Nov 7",  text:"The Water Gardens and Panj Tara", more:"Her first Indian food", img:"assets/photos/nov7-water.jpg?v=2026-11-09", alt:"The Water Gardens"},
+  {id:"nov-6",         date:"Nov 6",  text:"Book Fair in the Park Under the Stars", more:"Blue Bonnet Circle", img:"assets/photos/nov6-park.jpg?v=2026-11-09", alt:"The garden in the middle of Blue Bonnet Circle"},
+  {id:"oct-29",        date:"Oct 29", text:"Candlelight Halloween Classics", more:"Plus Ouija afterward", img:"assets/ouija.jpg?v=3", alt:"Candles and the Ouija board"},
+  {id:"oct-24",        date:"Oct 24", text:"B&N and Thai Food", more:"Plus tarot and a late movie", img:"assets/photos/oct24-padthai.jpg?v=2026-11-09", alt:"A plate of pad thai"},
+  {id:"oct-17",        date:"Oct 17", text:"A Halloween Store and Tinies", img:"assets/photos/oct17-tinies.jpg?v=2026-11-09", alt:"A chile relleno at Tinies"},
+  {id:"oct-15",        date:"Oct 15", text:"The First One"}
 ];
 const CREDITS = [
   ["Meow Wolf", "ObscuraNomad, CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Grapevine_Meow_Wolf_Washer_and_Dryer_The_Real_Unreal.jpg"],
-  ["cookies", "Infrogmation of New Orleans, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Cherry_chocolate_chip_cookies_on_a_baking_sheet.jpg"],
-  ["tarot spread", "Nosferattus, CC0", "https://commons.wikimedia.org/wiki/File:Tarot_cards_-_3_card_spread_with_candles.jpg"],
+  ["Cookies", "Infrogmation of New Orleans, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Cherry_chocolate_chip_cookies_on_a_baking_sheet.jpg"],
+  ["Tarot spread", "Nosferattus, CC0", "https://commons.wikimedia.org/wiki/File:Tarot_cards_-_3_card_spread_with_candles.jpg"],
   ["Hudson House", "hudsonhouse.com", "https://www.hudsonhouse.com/"],
-  ["sweet shop", "Malcolmxl5, CC0", "https://commons.wikimedia.org/wiki/File:The_Shambles_Sweet_Shop_York_Jun25.jpg"],
+  ["Sweet shop", "Malcolmxl5, CC0", "https://commons.wikimedia.org/wiki/File:The_Shambles_Sweet_Shop_York_Jun25.jpg"],
   ["The Hierophant card", "Pamela Colman Smith, 1909, public domain", "https://commons.wikimedia.org/wiki/File:RWS_Tarot_05_Hierophant.jpg"],
-  ["picnic basket", "Jeremy Noble, CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Picnic_basket_01.jpg"],
-  ["drive-in", "John Margolies, Library of Congress, no known restrictions", "https://commons.wikimedia.org/wiki/File:The_Gay_90_Drive-in_Theater,_Route_90,_Del_Rio,_Texas_(LOC).jpg"],
+  ["Picnic basket", "Jeremy Noble, CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Picnic_basket_01.jpg"],
+  ["Drive-in", "John Margolies, Library of Congress, no known restrictions", "https://commons.wikimedia.org/wiki/File:The_Gay_90_Drive-in_Theater,_Route_90,_Del_Rio,_Texas_(LOC).jpg"],
   ["Galleria ice rink", "David Leo Veksler, CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Ice_rink_in_the_Galleria_Dallas_(3478241581).jpg"],
   ["Barber's Book Store", "Michael Barera, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Fort_Worth_June_2016_21_(Barber%27s_Book_Store).jpg"],
   ["Barnes & Noble", "NeoBatfreak, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Barnes_%26_Noble_Bookseller_(Fresno,_Ca)_interior.jpg"],
-  ["snowman", "Terry.grignon, CC0", "https://commons.wikimedia.org/wiki/File:Snowman_on_a_foggy_day.jpg"],
-  ["fresh pasta", "Davide Ragusa, CC0", "https://commons.wikimedia.org/wiki/File:Homemade_fresh_pasta_(spaghetti)_by_Camille_(Unsplash).jpg"],
+  ["Snowman", "Terry.grignon, CC0", "https://commons.wikimedia.org/wiki/File:Snowman_on_a_foggy_day.jpg"],
+  ["Fresh pasta", "Davide Ragusa, CC0", "https://commons.wikimedia.org/wiki/File:Homemade_fresh_pasta_(spaghetti)_by_Camille_(Unsplash).jpg"],
   ["The Archibald", "the-archibald.com", "https://the-archibald.com/"],
-  ["gingerbread house", "Thegreatmutata, CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Gingerbread_house_with_candy.jpg"],
+  ["Gingerbread house", "Thegreatmutata, CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Gingerbread_house_with_candy.jpg"],
   ["Christmas lights", "Anthony92931, CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Christmas_Lights_house_display.JPG"],
   ["Medfield State Hospital", "Ghostfacesouthshore, CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Medfield_State_Hospital.jpg"],
   ["Panj Tara", "panjtaratx.com", "https://www.panjtaratx.com/"],
-  ["karaoke", "Martín Vasco, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Karaoke_singer_at_Cuna_de_Artistas,_Loja.jpg"],
+  ["Karaoke", "Martín Vasco, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Karaoke_singer_at_Cuna_de_Artistas,_Loja.jpg"],
   ["Gaylord Texan", "Larry D. Moore, CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Gaylord_texan_2009.jpg"],
   ["Bell Labs Holmdel", "Acroterion, CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Bell_Labs_NJ1.jpg"],
   ["Thompson's Bookstore", "thompsons-bookstore.com", "https://thompsons-bookstore.com/"],
-  ["lego build", "InSapphoWeTrust, CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Lego_Modular_-_Set_10224_Town_Hall_(8310512787).jpg"],
+  ["Lego build", "InSapphoWeTrust, CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Lego_Modular_-_Set_10224_Town_Hall_(8310512787).jpg"],
   ["Parade of Lights", "fortworthparadeoflights.org", "https://fortworthparadeoflights.org/"],
   ["Blue Bonnet Circle", "City of Fort Worth", "https://fortworthtexas.gov/departments/parks/parks-and-trails/blue-bonnet-circle"],
-  ["pad thai", "Andy Li, CC0", "https://commons.wikimedia.org/wiki/File:Pad_Thai_Noodles_-_Little_Thai,_Brighton_2024-03-21.jpg"],
+  ["Pad thai", "Andy Li, CC0", "https://commons.wikimedia.org/wiki/File:Pad_Thai_Noodles_-_Little_Thai,_Brighton_2024-03-21.jpg"],
   ["Tinies", "tiniesfw.com", "https://www.tiniesfw.com/"]
 ];
 const POOL = DECK.filter(c => c.draw !== false && !c.done);
@@ -344,7 +344,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const art = id => `assets/cards/${id}.webp?v=${ART_V}`;
 const TITLE = new Map();
 const BUBBLE = '<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M1 1.5h10v7H5.2L2.6 11V8.5H1z"/></svg>';
-const commentBtn = (id, strip) => `<button class="cbtn${strip ? " strip" : ""}" type="button" data-on="${esc(id)}">comment</button>`;
+const commentBtn = (id, strip) => `<button class="cbtn${strip ? " strip" : ""}" type="button" data-on="${esc(id)}">Comment</button>`;
 
 const frontHTML = (c, lazy) =>
   `<div class="in"><div class="ph"><img src="${art(c.id)}" alt="" ${lazy ? 'loading="lazy" ' : ""}decoding="async">` +
@@ -382,7 +382,7 @@ DECK.forEach(c => {
   el.id = "card-" + c.id;
   el.tabIndex = 0;
   el.setAttribute("role", "button");
-  el.setAttribute("aria-label", `${c.name}: ${c.title}. tap to flip`);
+  el.setAttribute("aria-label", `${c.name}: ${c.title}. Tap to flip.`);
   el.innerHTML = `<div class="inner"><div class="face front">${frontHTML(c, true)}</div><div class="face back">${backHTML(c)}</div></div>`;
   el.querySelector(".front .ph").insertAdjacentHTML("beforeend", `<span class="cdot" data-on="${esc(c.id)}" hidden>${BUBBLE}<b>0</b></span>`);
   wireFlip(el);
@@ -408,11 +408,11 @@ DID.forEach(d => {
 artFallback(document);
 
 $("#credits").innerHTML = CREDITS.map(([what, who, url]) => `<li>${esc(what)}: <a href="${url}" rel="noopener">${esc(who)}</a></li>`).join("") +
-  "<li>wikimedia photos are cropped to fit the cards.</li>";
+  "<li>Wikimedia photos are cropped to fit the cards.</li>";
 
 function setNext(c) {
-  $("#nextTitle").textContent = c ? c.title : "to be drawn";
-  $("#nextWhere").textContent = c ? (c.where || "") : "pull a card to pick it.";
+  $("#nextTitle").textContent = c ? c.title : "To be drawn";
+  $("#nextWhere").textContent = c ? (c.where || "") : "Pull a card to pick it.";
   document.querySelectorAll(".tcard.next-up").forEach(e => e.classList.remove("next-up"));
   if (c) document.getElementById("card-" + c.id)?.classList.add("next-up");
 }
@@ -456,7 +456,7 @@ function savePick(c) {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({fields: {card: {stringValue: c.id}}})
   }).then(r => { if (!r.ok) throw new Error(r.status); })
-    .catch(() => { $("#nextWhere").textContent = "that didn't save, pull again."; });
+    .catch(() => { $("#nextWhere").textContent = "That didn't save. Pull again."; });
 }
 
 let who = "daniela";
@@ -487,14 +487,14 @@ function keepComment(d) {
 }
 const shortDate = iso => {
   const d = new Date(iso);
-  return isNaN(d) ? "" : d.toLocaleDateString("en-US", {month: "short", day: "numeric"}).toLowerCase();
+  return isNaN(d) ? "" : d.toLocaleDateString("en-US", {month: "short", day: "numeric"});
 };
 function showCounts() {
   const n = {};
   COMMENTS.forEach(c => { n[c.on] = (n[c.on] || 0) + 1; });
   document.querySelectorAll(".cbtn").forEach(b => {
     const k = n[b.dataset.on] || 0;
-    b.textContent = k ? `${k} comment${k > 1 ? "s" : ""}` : "comment";
+    b.textContent = k ? `${k} comment${k > 1 ? "s" : ""}` : "Comment";
   });
   document.querySelectorAll(".cdot").forEach(d => {
     const k = n[d.dataset.on] || 0;
@@ -506,8 +506,8 @@ function showComments() {
   if (!sheetOn) return;
   const list = [...COMMENTS.values()].filter(c => c.on === sheetOn).sort((a, b) => a.at.localeCompare(b.at));
   $("#clist").innerHTML = list.length
-    ? list.map(c => `<li><p class="chead">${esc(c.who)}${shortDate(c.at) ? " · " + esc(shortDate(c.at)) : ""}</p><p class="ctext">${esc(c.text)}</p></li>`).join("")
-    : '<li class="none">no comments yet.</li>';
+    ? list.map(c => `<li><p class="chead">${c.who === "rishi" ? "Rishi" : "Daniela"}${shortDate(c.at) ? " · " + esc(shortDate(c.at)) : ""}</p><p class="ctext">${esc(c.text)}</p></li>`).join("")
+    : '<li class="none">No comments yet.</li>';
 }
 async function loadComments() {
   try {
@@ -557,7 +557,7 @@ $("#cpost").addEventListener("click", async () => {
     showCounts();
     showComments();
   } catch (e) {
-    setStatus($("#cstatus"), "that didn't post. try again.", true);
+    setStatus($("#cstatus"), "That didn't post. Try again.", true);
   }
   post.disabled = false;
 });
@@ -568,7 +568,7 @@ function readIdea(d) {
   const f = d.fields || {};
   if (!f.title?.stringValue) return null;
   const by = f.who?.stringValue === "rishi" ? "rishi" : "daniela";
-  return {id: d.name.split("/").pop(), idea: true, num: "✦", name: by === "rishi" ? "his idea" : "her idea", title: f.title.stringValue, where: f.where?.stringValue || "", at: f.at?.stringValue || ""};
+  return {id: d.name.split("/").pop(), idea: true, num: "✦", name: by === "rishi" ? "His idea" : "Her idea", title: f.title.stringValue, where: f.where?.stringValue || "", at: f.at?.stringValue || ""};
 }
 function putIdea(c) {
   if (IDEAS.has(c.id)) return document.getElementById("card-" + c.id);
@@ -609,10 +609,10 @@ $("#ideaForm").addEventListener("submit", async e => {
     showCounts();
     $("#ideaTitle").value = "";
     $("#ideaWhere").value = "";
-    setStatus($("#ideaStatus"), "added. it's in the deck now.");
+    setStatus($("#ideaStatus"), "Added. It's in the deck now.");
     glow(el);
   } catch (err) {
-    setStatus($("#ideaStatus"), "that didn't save. try again.", true);
+    setStatus($("#ideaStatus"), "That didn't save. Try again.", true);
   }
   add.disabled = false;
 });
@@ -625,7 +625,7 @@ async function loadAll() {
 loadAll();
 
 // an old tab left open picks up new versions when she comes back to it, unless she's mid-comment
-const BUILD = "2026-11-09-pics";
+const BUILD = "2026-11-09-caps";
 const busy = () => !$("#modal").hidden || !sheet.hidden || $("#ideaTitle").value.trim() || $("#ideaWhere").value.trim() || Object.values(drafts).some(v => v.trim());
 function checkVersion() {
   fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
