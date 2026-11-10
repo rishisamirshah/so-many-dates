@@ -55,6 +55,8 @@ h1{font:italic 400 clamp(66px,21vw,92px)/.9 "Bodoni Moda",serif;margin-top:10px;
 .tmain h2{font:italic 400 34px/1 "Bodoni Moda",serif;margin-top:4px;overflow-wrap:anywhere}
 .tmain p{font-size:14px;color:var(--slate);margin-top:2px}
 .tmain p.caps{font-size:12px;color:var(--rust-ink);margin-top:0}
+.tmain p.slab{font:600 10.5px/1 "Jost",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);margin-top:10px}
+.slot+.slot{margin-top:12px;border-top:1px solid rgba(19,34,28,.18)}
 .seen{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .seen a{font:500 10px/1 "Jost",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);border:1px solid rgba(19,34,28,.3);padding:4px 6px 3px;text-decoration:none}
 
@@ -193,12 +195,20 @@ footer{text-align:center;padding-top:44px;padding-bottom:50px;color:var(--muted)
       <a class="btn" href="#deck">See the deck</a>
     </div>
   </header>
-  <section class="ticket" aria-label="Next date">
+  <section class="ticket" aria-label="Next dates">
     <div class="stub"><span>Admit Two</span></div>
     <div class="tmain">
-      <p class="caps">Next date</p>
-      <h2 id="nextTitle">To be drawn</h2>
-      <p id="nextWhere">Pull a card to pick it.</p>
+      <p class="caps">Up next</p>
+      <div class="slot">
+        <p class="slab">Date one</p>
+        <h2 id="nextTitle">To be drawn</h2>
+        <p id="nextWhere">Pull a card to pick it.</p>
+      </div>
+      <div class="slot">
+        <p class="slab">Date two</p>
+        <h2 id="nextTitle2">To be drawn</h2>
+        <p id="nextWhere2">Pull a card to pick it.</p>
+      </div>
       <div class="seen" id="seen"></div>
     </div>
   </section>
@@ -238,7 +248,7 @@ footer{text-align:center;padding-top:44px;padding-bottom:50px;color:var(--muted)
 
 <div class="modal" id="modal" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-label="Pull a card">
-    <p class="caps">Let the cards pick the next date</p>
+    <p class="caps" id="mhead">Let the cards pick the next date</p>
     <div class="tcard" id="mcard">
       <div class="inner">
         <div class="face front cardback"><div class="in">
@@ -281,7 +291,7 @@ const DECK = [
   {id:"lovers",     num:"VI",    name:"The Lovers",         title:"A Picnic",                      where:"Somewhere pretty",                                    when:"On a nice day"},
   {id:"chariot",    num:"VII",   name:"The Chariot",        title:"A Drive-In Movie",              where:"Something scary",                                     when:"On a cold night"},
   {id:"strength",   num:"VIII",  name:"Strength",           title:"Skating at the Galleria",       where:"The rink under the big glass roof",                   when:"Anytime"},
-  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore",            where:"A vintage bookstore in downtown Fort Worth",          when:"December",          draw:false},
+  {id:"hermit",     num:"IX",    name:"The Hermit",         title:"Barber's Bookstore",            where:"A vintage bookstore in downtown Fort Worth",          when:"Done Nov 7",        done:true},
   {id:"wheel",      num:"X",     name:"Wheel of Fortune",   title:"Our B&N Games",                 where:"The escape room and the horror one",                  when:"Next time you're over"},
   {id:"hanged",     num:"XII",   name:"The Hanged Man",     title:"Make a Snowman",                where:"In the first real snow",                              when:"Whenever it snows", draw:false},
   {id:"temperance", num:"XIV",   name:"Temperance",         title:"A Pasta-Making Class",          where:"At a fancy Italian place",                            when:"Soon"},
@@ -410,16 +420,22 @@ artFallback(document);
 $("#credits").innerHTML = CREDITS.map(([what, who, url]) => `<li>${esc(what)}: <a href="${url}" rel="noopener">${esc(who)}</a></li>`).join("") +
   "<li>Wikimedia photos are cropped to fit the cards.</li>";
 
-function setNext(c) {
-  $("#nextTitle").textContent = c ? c.title : "To be drawn";
-  $("#nextWhere").textContent = c ? (c.where || "") : "Pull a card to pick it.";
+// two dates at a time; "friday" is the first slot's original doc name
+const SLOTS = [
+  {doc: "friday", name: "date one", card: null, title: $("#nextTitle"), where: $("#nextWhere")},
+  {doc: "second", name: "date two", card: null, title: $("#nextTitle2"), where: $("#nextWhere2")}
+];
+function showSlots() {
+  SLOTS.forEach(s => {
+    s.title.textContent = s.card ? s.card.title : "To be drawn";
+    s.where.textContent = s.card ? (s.card.where || "") : "Pull a card to pick it.";
+  });
   document.querySelectorAll(".tcard.next-up").forEach(e => e.classList.remove("next-up"));
-  if (c) document.getElementById("card-" + c.id)?.classList.add("next-up");
+  SLOTS.forEach(s => { if (s.card) document.getElementById("card-" + s.card.id)?.classList.add("next-up"); });
 }
 
 // shared Firestore docs, so a pick, idea or comment on one phone shows on the other
 const FS = "https://firestore.googleapis.com/v1/projects/our-dates-rishi/databases/(default)/documents";
-const PICK_URL = FS + "/picks/friday";
 const str = v => ({stringValue: v});
 
 async function fsList(col) {
@@ -442,21 +458,24 @@ async function fsAdd(path, fields) {
 }
 
 async function loadPick() {
-  try {
-    const r = await fetch(PICK_URL, {cache: "no-store"});
-    if (r.status === 404) { setNext(null); return; }
-    if (!r.ok) return;
-    const d = await r.json();
-    setNext(POOL.find(x => x.id === d.fields?.card?.stringValue) || null);
-  } catch (e) {}
+  await Promise.all(SLOTS.map(async s => {
+    try {
+      const r = await fetch(`${FS}/picks/${s.doc}`, {cache: "no-store"});
+      if (r.status === 404) { s.card = null; return; }
+      if (!r.ok) return;
+      const d = await r.json();
+      s.card = POOL.find(x => x.id === d.fields?.card?.stringValue) || null;
+    } catch (e) {}
+  }));
+  showSlots();
 }
-function savePick(c) {
-  fetch(PICK_URL, {
+function savePick(s, c) {
+  fetch(`${FS}/picks/${s.doc}`, {
     method: "PATCH",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({fields: {card: {stringValue: c.id}}})
   }).then(r => { if (!r.ok) throw new Error(r.status); })
-    .catch(() => { $("#nextWhere").textContent = "That didn't save. Pull again."; });
+    .catch(() => { s.where.textContent = "That didn't save. Pull again."; });
 }
 
 let who = "daniela";
@@ -625,7 +644,7 @@ async function loadAll() {
 loadAll();
 
 // an old tab left open picks up new versions when she comes back to it, unless she's mid-comment
-const BUILD = "2026-11-09-caps";
+const BUILD = "2026-11-10-two";
 const busy = () => !$("#modal").hidden || !sheet.hidden || $("#ideaTitle").value.trim() || $("#ideaWhere").value.trim() || Object.values(drafts).some(v => v.trim());
 function checkVersion() {
   fetch("version.txt?t=" + Date.now(), {cache: "no-store"})
@@ -640,12 +659,14 @@ checkVersion();
 document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadAll(); checkVersion(); } });
 
 const modal = $("#modal"), mcard = $("#mcard"), verdict = $("#verdict");
-let last = -1, picked = POOL[0], timers = [];
+// a pull fills the first empty slot (date two once both are full) and never offers the other slot's card
+let aim = SLOTS[0], picked = POOL[0], lastPick = null, timers = [];
+const drawPool = () => POOL.filter(c => !SLOTS.some(s => s !== aim && s.card && s.card.id === c.id));
 function pull() {
   timers.forEach(clearTimeout); timers = [];
-  let i;
-  do { i = Math.floor(Math.random() * POOL.length); } while (i === last && POOL.length > 1);
-  last = i; picked = POOL[i];
+  const pool = drawPool();
+  do { picked = pool[Math.floor(Math.random() * pool.length)]; } while (picked === lastPick && pool.length > 1);
+  lastPick = picked;
   const r = $("#mreveal");
   r.className = "face reveal" + (picked.idea ? " ideaface" : "");
   r.innerHTML = picked.idea ? ideaHTML(picked, false) : frontHTML(picked, false);
@@ -660,13 +681,21 @@ function pull() {
     verdict.classList.add("show");
   }, reduce ? 0 : 1600));
 }
-function openModal() { modal.hidden = false; document.body.style.overflow = "hidden"; pull(); $("#again").focus(); }
+function openModal() {
+  aim = SLOTS.find(s => !s.card) || SLOTS[1];
+  $("#mhead").textContent = "Let the cards pick " + aim.name;
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+  pull();
+  $("#again").focus();
+}
 function closeModal() { modal.hidden = true; document.body.style.overflow = ""; }
 $("#pull").addEventListener("click", openModal);
 $("#again").addEventListener("click", pull);
 $("#deal").addEventListener("click", () => {
-  setNext(picked);
-  savePick(picked);
+  aim.card = picked;
+  showSlots();
+  savePick(aim, picked);
   closeModal();
   const el = document.getElementById("card-" + picked.id);
   glow(el);
